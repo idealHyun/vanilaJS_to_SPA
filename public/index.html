@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const $app = document.querySelector('#app')
+
+        let state = {
+            items: ['1', '2', '3']
+        }
+
+        const render = () => {
+            const { items } = state
+
+            $app.innerHTML = `
+            <ul>
+                ${items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+                <button id='append'>추가</button>
+            `
+
+            document.querySelector('#append').addEventListener('click', () => {
+                setState({ items: [...items, `${items.length}`] })
+            })
+        }
+
+        const setState = (newState) => {
+            state = { ...state, ...newState };
+            render();
+        }
+
+        render();
+    </script>
+</body>
+
+</html>
