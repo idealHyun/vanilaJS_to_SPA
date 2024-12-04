@@ -5,6 +5,7 @@ export default class Component {
   constructor($target) {
     this.$target = $target
     this.setup()
+    this.setEvent();
     this.render()
   }
 
@@ -20,7 +21,6 @@ export default class Component {
   // 레이아웃 만들고 이벤트 달기
   render() {
     this.$target.innerHTML = this.template();
-    this.setEvent();
   }
 
   // 상태 업데이트
