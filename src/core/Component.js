@@ -28,4 +28,13 @@ export default class Component {
     this.state = { ...this.state, ...newState }
     this.render()
   }
+
+  // 이벤트 추가 함수 추상화
+  addEvent (eventType, selector, callback) {
+    // const children = [ ...this.$target.querySelectorAll(selector) ];
+    this.$target.addEventListener(eventType, event => {
+      if (!event.target.closest(selector)) return false;
+      callback(event);
+    })
+  }
 }
